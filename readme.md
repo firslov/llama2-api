@@ -1,12 +1,12 @@
 # Llama2 API
 
-A Llama2 streaming output API with an OpenAI style, support for multi-gpus inference with model of 13B or higher.
+A Llama2 streaming output API with OpenAI style, support for multi-gpu inference with model of 13B or larger.
 
 ## Setup
 
 1. Install `llama` from [official repository](https://github.com/facebookresearch/llama).
 
-2. Download `llama2 weights` from [this repository](https://github.com/FlagAlpha/Llama2-Chinese), `pth` format is recommended.
+2. Download `llama2 weights` from [this repository](https://github.com/FlagAlpha/Llama2-Chinese), it's recommended to use `pth` format.
 
 3. Clone this repo:
 
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Run
 
-Set the arguments in `run_api.sh`, then
+Set arguments in `run_api.sh`, then
 
 ```shell
 ./run_api.sh

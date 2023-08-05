@@ -1,0 +1,6 @@
+fairscale==0.4.13
+fastapi==0.101.0
+fire==0.5.0
+sse_starlette==1.6.1
+torch==2.0.1
+uvicorn==0.23.2

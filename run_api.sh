@@ -1,5 +1,5 @@
 #!/bin/bash
-
+nohup python3 wakeup.py > /dev/null 2>&1 &
 python3 -m torch.distributed.run \
     --nproc_per_node 2 api.py \
     --ckpt_dir /path/to/model/dir/ \

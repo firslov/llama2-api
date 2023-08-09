@@ -1,4 +1,3 @@
-from typing import Optional
 from streamllama import sLlama
 import fire
 import torch.distributed as dist
@@ -6,6 +5,7 @@ import torch.distributed as dist
 from fastapi import FastAPI
 from fastapi import Request
 import uvicorn
+import datetime
 from sse_starlette.sse import EventSourceResponse
 
 
@@ -17,7 +17,6 @@ def my_generator(g):
     while res != "[DONE]":
         dist.barrier()
         res = next(g)
-        dist.barrier()
         yield res
 
 
@@ -28,8 +27,9 @@ def main(
     top_p: float = 0.9,
     max_seq_len: int = 512,
     max_batch_size: int = 4,
-    max_gen_len: Optional[int] = None,
+    max_gen_len: int = None,
 ):
+    dist.init_process_group("nccl", timeout=datetime.timedelta(0, 1800))
     # initialize Llama 2
     generator = sLlama.build(
         ckpt_dir=ckpt_dir,
@@ -76,7 +76,6 @@ def main(
                 while res != "[DONE]":
                     dist.barrier()
                     res = next(g)
-                    dist.barrier()
             except:
                 pass
 

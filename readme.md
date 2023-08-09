@@ -27,3 +27,7 @@ Set arguments in `run_api.sh`, then
 ```shell
 ./run_api.sh
 ```
+
+## Issue
+
+- 8/9/2023 The `torch.distributed` module imposes a maximum timeout of 30 minutes. Since I couldn't find a suitable solution using `torch.distributed`, I had to resort to a less elegant approach of sending periodic POST requests to reset the timeout.
